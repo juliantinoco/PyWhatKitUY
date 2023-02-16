@@ -95,6 +95,22 @@ def _web(receiver: str, message: str) -> None:
     else:
         open("https://web.whatsapp.com/accept?code=" + receiver)
 
+def send_messages(messages: [], receiver: str, wait_time: int) -> None:
+    """Parses and Sends the Messages"""
+
+    _web(receiver=receiver, message='')
+    time.sleep(7)
+    click(WIDTH / 2, HEIGHT / 2 + 15)
+    time.sleep(wait_time - 7)
+    if not check_number(number=receiver):
+        for message in messages:
+            for char in message:
+                if char == "\n":
+                    hotkey("shift", "enter")
+                else:
+                    typewrite(char)
+            # findtextbox()
+            press("enter")
 
 def send_message(message: str, receiver: str, wait_time: int) -> None:
     """Parses and Sends the Message"""

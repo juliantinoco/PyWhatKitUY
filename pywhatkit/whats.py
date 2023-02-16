@@ -200,6 +200,21 @@ def sendwhatmsg_to_group(
     if tab_close:
         core.close_tab(wait_time=close_time)
 
+def sendwhatmsgs_to_group_instantly(
+        group_id: str,
+        messages: [],
+        wait_time: int = 15,
+        tab_close: bool = False,
+        close_time: int = 3,
+) -> None:
+    """Send WhatsApp Message to a Group Instantly"""
+
+    current_time = time.localtime()
+    time.sleep(1)
+    core.send_messages(messages=messages, receiver=group_id, wait_time=wait_time)
+    # log.log_message(_time=current_time, receiver=group_id, message=message)
+    if tab_close:
+        core.close_tab(wait_time=close_time)
 
 def sendwhatmsg_to_group_instantly(
         group_id: str,
